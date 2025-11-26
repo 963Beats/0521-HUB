@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05:21 Official | Members Only Vault</title>
+  <meta name="description" content="The Real History of UK Rap – Members Only" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+<!-- REPLACE YOUR ENTIRE LOGIN SCREEN WITH THIS (copy-paste) -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-wrapper">
+    <h1>05:21 OFFICIAL</h1>
+    <p class="tagline">Members Only • The Real History of UK Hip Hop</p>
+    <div class="login-form">
+      <input type="text" id="username" placeholder="Username" autocomplete="off" />
+      <input type="password" id="password" placeholder="Password" autocomplete="off" />
+      <!-- THIS IS THE FIX — onclick added directly -->
+      <button id="signInBtn" onclick="handleLogin()">ENTER THE VAULT</button>
+      <div class="demo">
+        <strong>Demo Access:</strong><br>
+        <span style="color:#e50914;">legend / 0521</span> → Full Access<br>
+        member / 0521 → Member Tier<br>
+        free / free → Free Tier
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- YOUR ORIGINAL SITE (hidden until login) -->
+  <div id="mainApp" class="main-app" style="display:none;">
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <a href="#" class="logo">05:21</a>
+      <div class="nav-links">
+        <a href="#" class="active" data-category="docuchats">DocuChats</a>
+        <a href="#" data-category="music-videos">Music Videos</a>
+        <a href="#" data-category="roadshows">Roadshows</a>
+        <a href="#" data-category="classics">Classics & Pioneers</a>
+      </div>
+      <div class="user-info">
+        <span id="userTier" style="color:#e50914; font-weight:bold;">GUEST</span>
+        <button onclick="logout()" class="logout-btn">Logout</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-header">
+      <img src="https://i.ytimg.com/vi/_HWkIietZyU/maxresdefault.jpg" alt="Featured" class="hero-banner" loading="lazy" />
+      <div class="hero-content">
+        <h1 class="hero-title">05:21 OFFICIAL</h1>
+        <p class="hero-subtitle">Preserving the true history of UK Hip Hop — one story, one cypher, one bar at a time.</p>
+        <button class="btn-play" onclick="openVideoDetails('_HWkIietZyU', 'DocuChats E100', '1:27:37')">
+          Play Latest
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <aside class="sidebar">
+        <div class="sidebar-item active" data-category="docuchats">DocuChats</div>
+        <div class="sidebar-item" data-category="music-videos">Music Videos</div>
+        <div class="sidebar-item" data-category="roadshows">Roadshows</div>
+        <div class="sidebar-item" data-category="classics">Classics & Pioneers</div>
+      </aside>
+      <main class="main-content">
+        <h2 class="section-title" id="section-title">DocuChats</h2>
+        <div id="video-grid" class="video-grid"></div>
+      </main>
+    </div>
+
+    <!-- DETAILS MODAL -->
+    <div class="video-details-modal" id="detailsModal">
+      <div class="modal-backdrop" onclick="closeDetails()"></div>
+      <div class="modal-content">
+        <span class="close-details" onclick="closeDetails()">×</span>
+        <div class="modal-poster">
+          <img id="modal-thumb" src="" alt="">
+          <div class="play-btn-big" id="playBigBtn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span>Play</span>
+          </div>
+        </div>
+        <div class="modal-info">
+          <h1 id="modal-title"></h1>
+          <p class="duration" id="modal-duration"></p>
+          <p class="description">Exclusive 05:21 Official content featuring in-depth interviews, live roadshows, and classic UK Hip Hop moments.</p>
+          <div class="actions">
+            <button class="btn-primary" id="playBtn">Play</button>
+            <button class="btn-secondary" onclick="window.open('https://www.youtube.com/@0521Official', '_blank')">
+              Go to Channel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FULL-SCREEN PLAYER -->
+    <div class="overlay" id="playerOverlay">
+      <div class="player-container">
+        <span class="close-btn" onclick="closePlayer()">×</span>
+        <div id="player-wrapper"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/videos-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
